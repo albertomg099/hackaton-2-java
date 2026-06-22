@@ -4,7 +4,7 @@ import java.util.Comparator;
 public class Agenda {
 
     // 1. Declaramos la lista de contactos
-    private ArrayList<Contacto> contactos;
+    private final ArrayList<Contacto> contactos;
 
     // 2. Constructor para inicializar la lista
     public Agenda() {
