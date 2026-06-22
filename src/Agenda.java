@@ -15,6 +15,8 @@ public class Agenda {
         }
 
     }// metodo añadirContacto
+
+
     public boolean existeContacto(Contacto c) {
         if (c == null) {
             return false;
