@@ -89,4 +89,26 @@ public class Agenda {
         }
     }
 
+    public void modificarTelefono(String nombre, String apellido, String nuevoTelefono) {
+        boolean encontrado = false;
+
+        for (int i = 0; i < contadorContacto; i++) {
+            Contacto c = listaContacto[i];
+
+            if (c.getName().equalsIgnoreCase(nombre) &&
+                    c.getLastName().equalsIgnoreCase(apellido)) {
+
+                c.setNumber(nuevoTelefono);
+                System.out.println("Teléfono modificado correctamente.");
+                System.out.println("Nuevo teléfono de " + c.getName() + " " + c.getLastName() + ": " + c.getNumber());
+
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            System.out.println("Contacto no encontrado. No se pudo modificar el teléfono.");
+        }
+    }
 }

@@ -59,5 +59,22 @@ public class Main {
         // Debería imprimir : Ale, Ana, José, Maria
         miAgenda.listarContactos();
 
+
+        // ==========================================================
+        // PRUEBA: MODIFICAR TELÉFONO Estef
+        // ==========================================================
+        System.out.println("\n--- 4. PRUEBA DE MODIFICAR TELÉFONO ---");
+
+        System.out.println(">> Teléfono antes de modificar:");
+        miAgenda.buscaContacto("Maria", "González");
+
+        System.out.println("\n>> Modificando teléfono de Maria González...");
+        miAgenda.modificarTelefono("Maria", "González", "8199999999");
+
+        System.out.println("\n>> Teléfono después de modificar:");
+        miAgenda.buscaContacto("Maria", "González");
+
+        System.out.println("\n>> Intentando modificar un contacto que no existe:");
+        miAgenda.modificarTelefono("Pedro", "Lopez", "5555555555");
     }
 }
