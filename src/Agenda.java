@@ -1,10 +1,19 @@
 
 public class Agenda {
 
-    public static añadirContacto(Contacto c) {
+    private Contacto[] listaContacto = new Contacto[10];
+    private int contadorContacto = 0;
 
-
-    }// metodo añadorContacto
+    public void añadirContacto(String name, String lastName, String number){
+        if(contadorContacto >= 10){
+            System.out.println("La agenda está llena, no se pueden agregar más contactos.");
+        }else {
+            Contacto nuevo = new Contacto(name, lastName, number);
+            listaContacto[contadorContacto] = new Contacto(name, lastName, number);
+            contadorContacto++;
+        }
+        System.out.println("Contacto añadido con éxito.");
+    }// metodo añadirContacto
 
 }// class Agenda
 
