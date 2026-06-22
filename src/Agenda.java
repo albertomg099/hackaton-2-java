@@ -9,11 +9,14 @@ public class Agenda {
             System.out.println("La agenda está llena, no se pueden agregar más contactos.");
         }else {
             Contacto nuevo = new Contacto(name, lastName, number);
-            listaContacto[contadorContacto] = new Contacto(name, lastName, number);
+            listaContacto[contadorContacto] = nuevo;
             contadorContacto++;
+            System.out.println("Contacto añadido con éxito.");
         }
-        System.out.println("Contacto añadido con éxito.");
+
     }// metodo añadirContacto
+
+
 
 }// class Agenda
 
