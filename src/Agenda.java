@@ -15,7 +15,21 @@ public class Agenda {
         }
 
     }// metodo añadirContacto
+    public boolean existeContacto(Contacto c) {
+        if (c == null) {
+            return false;
+        }
 
+        for (int i = 0; i < contadorContacto; i++) {
+            Contacto actual = listaContacto[i];
+
+            if (actual.getName().equalsIgnoreCase(c.getName()) &&
+                    actual.getLastName().equalsIgnoreCase(c.getLastName())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }// class Agenda
