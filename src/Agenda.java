@@ -1,6 +1,6 @@
 public class Agenda {
-    private Contacto[] contactos;
-    private int totalContactos;
+    public Contacto[] contactos;
+    public int totalContactos;
 
     public Agenda() {
         this.contactos = new Contacto[10];
