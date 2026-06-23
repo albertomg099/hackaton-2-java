@@ -48,5 +48,26 @@ public class Main {
         miAgenda.modificarTelefono("Maria", "González", "999-888-777");
         miAgenda.modificarTelefono("Luis", "Alvarez", "555-000-111");
 
+        Agenda agenda = new Agenda();
+
+
+        agenda.contactos[0] = new Contacto("Juan", "Perez", "1234");
+        agenda.contactos[1] = new Contacto("Ana", "Lopez", "5678");
+        agenda.contactos[2] = new Contacto("Luis", "Garcia", "9012");
+        agenda.contactos[3] = new Contacto("Maria", "Torres", "3456");
+        agenda.contactos[4] = new Contacto("Pedro", "Ruiz", "7890");
+        agenda.contactos[5] = new Contacto("Laura", "Diaz", "1111");
+        agenda.contactos[6] = new Contacto("Carlos", "Vega", "2222");
+        agenda.contactos[7] = new Contacto("Sofia", "Mora", "3333");
+        agenda.contactos[8] = new Contacto("Diego", "Cruz", "4444");
+        agenda.contactos[9] = new Contacto("Elena", "Rios", "5555");
+        //agenda.listarContactos(); = 9;
+
+        System.out.println("--- 1. AÑADIENDO CONTACTOS ---");
+        miAgenda.añadirContacto("José", "Morales", "8100000000");
+        miAgenda.agendaLlena();
+
+
+
     } //método Main
 } //Maingit

@@ -125,6 +125,24 @@ public class Agenda {
         }
     }
 
+    public Contacto[] contactos;
+    public int totalContactos;
+
+    public Agenda() {
+        this.contactos = new Contacto[10];
+        this.totalContactos = 0;
+    }
+
+    public void agendaLlena() {
+        if (contadorContacto == listaContacto.length ) {
+            System.out.println("Espacio de agenda lleno");
+        } else {
+            System.out.println("La agenda tiene espacio disponible");
+        }
+    }
+
+
+
 
 
 } //
