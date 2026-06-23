@@ -45,5 +45,8 @@ public class Main {
         // Aquí debe aparecer la lista sin Ale
         miAgenda.listarContactos();
 
+        miAgenda.modificarTelefono("Maria", "González", "999-888-777");
+        miAgenda.modificarTelefono("Luis", "Alvarez", "555-000-111");
+
     } //método Main
 } //Maingit
