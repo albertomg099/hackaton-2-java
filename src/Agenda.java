@@ -101,4 +101,29 @@ public class Agenda {
             System.out.println("❌ Error: No se encontró el contacto '" + nombre + " " + apellido + "'.");
         }
     }
+
+    public void modificarTelefono(String nombre, String apellido, String nuevoTelefono) {
+        boolean encontrado = false;
+
+
+        for (int i = 0; i < contadorContacto; i++) {
+            Contacto c = listaContacto[i];
+
+
+            if (c.getName().equalsIgnoreCase(nombre) && c.getLastName().equalsIgnoreCase(apellido)) {
+
+                c.setNumber(nuevoTelefono);
+
+                System.out.println("El teléfono de " + c.getName() + " " + c.getLastName() + " ha sido actualizado con éxito.");
+                encontrado = true;
+                break;
+            }
+        }
+
+
+        if (!encontrado) {
+            System.out.println(" Error: No se encontró el contacto '" + nombre + " " + apellido + "' para modificar su teléfono.");
+        }
+    }
+
 } //
