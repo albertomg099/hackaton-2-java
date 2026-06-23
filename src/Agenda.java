@@ -39,13 +39,14 @@ public class Agenda {
 
         System.out.println("\n--- LISTA DE CONTACTOS ---");
 
-        // Copia solo los contactos activos para evitar NullPointerException
+        //solo contactos reales para poder ordenarlos
         Contacto[] contactosActivos = Arrays.copyOf(listaContacto, contadorContacto);
 
-        // Ordenamos alfabéticamente por nombre y luego apellido
+        // Ordenamos alfabéticamente
         Arrays.sort(contactosActivos, Comparator.comparing((Contacto c) -> c.getName().toLowerCase())
                 .thenComparing(c -> c.getLastName().toLowerCase()));
 
+        // Imprimimos get
         for (Contacto c : contactosActivos) {
             System.out.println(c.getName() + " " + c.getLastName() + " - " + c.getNumber());
         }
@@ -53,52 +54,39 @@ public class Agenda {
 
     public void buscaContacto(String nombre, String apellido) {
         boolean encontrado = false;
+
         for (int i = 0; i < contadorContacto; i++) {
             Contacto c = listaContacto[i];
+
             if (c.getName().equalsIgnoreCase(nombre) && c.getLastName().equalsIgnoreCase(apellido)) {
                 System.out.println("📞 Teléfono de " + c.getName() + " " + c.getLastName() + ": " + c.getNumber());
                 encontrado = true;
                 break;
             }
         }
-        if (!encontrado) System.out.println("❌ Contacto no encontrado.");
+
+        if (!encontrado) {
+            System.out.println("❌ Contacto no encontrado.");
+        }
     }
 
     public void buscaContacto(String nombreBuscado) {
         boolean encontrado = false;
+
         for (int i = 0; i < contadorContacto; i++) {
             Contacto c = listaContacto[i];
             String nombreCompleto = c.getName() + " " + c.getLastName();
+
             if (c.getName().equalsIgnoreCase(nombreBuscado) || nombreCompleto.equalsIgnoreCase(nombreBuscado)) {
                 System.out.println("📞 Teléfono: " + c.getNumber());
                 encontrado = true;
                 break;
             }
         }
-        if (!encontrado) System.out.println("❌ Contacto no encontrado.");
-    }
 
-    public void eliminarContacto(String nombre, String apellido) {
-        int indiceAEliminar = -1;
-
-        for (int i = 0; i < contadorContacto; i++) {
-            Contacto c = listaContacto[i];
-            if (c.getName().equalsIgnoreCase(nombre) && c.getLastName().equalsIgnoreCase(apellido)) {
-                indiceAEliminar = i;
-                break;
-            }
-        }
-
-        if (indiceAEliminar != -1) {
-            // Recorremos los elementos a la izquierda para tapar el hueco
-            for (int i = indiceAEliminar; i < contadorContacto - 1; i++) {
-                listaContacto[i] = listaContacto[i + 1];
-            }
-            listaContacto[contadorContacto - 1] = null;
-            contadorContacto--;
-            System.out.println("✅ Contacto '" + nombre + " " + apellido + "' eliminado exitosamente.");
-        } else {
-            System.out.println("❌ Error: No se encontró el contacto '" + nombre + " " + apellido + "'.");
+        if (!encontrado) {
+            System.out.println("❌ Contacto no encontrado.");
         }
     }
-} //
+
+}

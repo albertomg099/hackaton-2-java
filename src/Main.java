@@ -1,49 +1,63 @@
 public class Main {
     public static void main(String[] args) {
+
+        System.out.println("--- 0. PRUEBAS INDIVIDUALES DE LA CLASE CONTACTO ---");
+
+        // 1. Probamos el constructor
+        Contacto contactoPrueba = new Contacto("Luis", "Ramirez", "555-0000");
+
+        // 2. Probamos el método toString()
+        System.out.println("Contacto creado: " + contactoPrueba.toString());
+
+        // 3. Probamos un Setter y un Getter
+        contactoPrueba.setNumber("555-9999"); // Cambiamos el número
+        System.out.println("Número actualizado (probando Getter): " + contactoPrueba.getNumber());
+
+        System.out.println("----------------------------------------------------\n");
+
+
+        // ==========================================================
+        // PARTE 1: PRUEBAS DE LA AGENDA (Añadir y Existe)
+        // ==========================================================
         Agenda miAgenda = new Agenda();
 
-        // ==========================================================
-        // (El objeto base)
-        // ==========================================================
-        System.out.println("--- 0. PRUEBAS DE CLASE CONTACTO ---");
-        Contacto cPrueba = new Contacto("Luis", "Ramirez", "555-0000");
-        System.out.println("Objeto creado: " + cPrueba.toString());
-        System.out.println("------------------------------------\n");
-
-        // ==========================================================
-        //AÑADIR Y EXISTENCIA
-        // ==========================================================
-        System.out.println("--- 1. AÑADIENDO CONTACTOS ---");
+        System.out.println("--- 1. AÑADIENDO CONTACTOS (Compañero) ---");
         miAgenda.añadirContacto("José", "Morales", "8100000000");
         miAgenda.añadirContacto("Maria", "González", "8111111111");
+
+        //Ale para comprobar búsquedas
         miAgenda.añadirContacto("Ale", "Gomez", "555-1234");
+        //comprobar tu ordenamiento alfabético
         miAgenda.añadirContacto("Ana", "Zavala", "555-7777");
 
-        System.out.println("\n--- 2. VERIFICANDO EXISTENCIA ---");
-        Contacto buscar1 = new Contacto("José", "Morales", "");
-        System.out.println("¿Existe José Morales?: " + miAgenda.existeContacto(buscar1));
-        System.out.println("¿Existe Juan Perez?: " + miAgenda.existeContacto(new Contacto("Juan", "Perez", "")));
+        System.out.println("\n--- 2. VERIFICANDO SI EXISTEN (Compañero) ---");
+        Contacto contacto1 = new Contacto("Juan", "Perez", "5551234");
+        Contacto contacto2 = new Contacto("Carlos", "Gomez", "1112223");
+
+        boolean existeJuan = miAgenda.existeContacto(contacto1);
+        boolean existeCarlos = miAgenda.existeContacto(contacto2);
+
+        System.out.println("¿Existe Juan Perez en la agenda?: " + existeJuan);
+        System.out.println("¿Existe Carlos Gomez en la agenda?: " + existeCarlos);
+
 
         // ==========================================================
-        // 2. (Buscar y Listar) Ale
+        // PRUEBAS DE BÚSQUEDA Y LISTADO Ale
         // ==========================================================
         System.out.println("\n--- 3. PRUEBAS DE BÚSQUEDA ---");
-        miAgenda.buscaContacto("Maria", "González"); // Exacto
-        miAgenda.buscaContacto("Ale");               // Flexible
 
-        System.out.println("\n--- 4. LISTADO ALFABÉTICO ---");
+        System.out.println(">> Buscando exactamente a Maria González:");
+        miAgenda.buscaContacto("Maria", "González");
+
+        System.out.println("\n>> Buscando de forma flexible a 'Ale':");
+        miAgenda.buscaContacto("Ale");
+
+        System.out.println("\n>> Buscando a alguien que no está registrado ('Pedro'):");
+        miAgenda.buscaContacto("Pedro");
+
+        System.out.println("\n--- 4. PRUEBA DE LISTADO ALFABÉTICO ---");
+        // Debería imprimir : Ale, Ana, José, Maria
         miAgenda.listarContactos();
 
-        // ==========================================================
-        // 3. PRUEBAS DE ELIMINACIÓN
-        // ==========================================================
-        System.out.println("\n--- 5. PRUEBAS DE ELIMINACIÓN ---");
-        System.out.println("Eliminando a 'Ale Gomez'...");
-        miAgenda.eliminarContacto("Ale", "Gomez");
-
-        System.out.println("\n--- 6. VERIFICACIÓN FINAL (LISTADO) ---");
-        // Aquí debe aparecer la lista sin Ale
-        miAgenda.listarContactos();
-
-    } //método Main
-} //Maingit
+    }
+}
