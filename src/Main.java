@@ -1,80 +1,139 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("--- 0. PRUEBAS INDIVIDUALES DE LA CLASE CONTACTO ---");
-
-        // 1. Probamos el constructor
-        Contacto contactoPrueba = new Contacto("Luis", "Ramirez", "555-0000");
-
-        // 2. Probamos el método toString()
-        System.out.println("Contacto creado: " + contactoPrueba.toString());
-
-        // 3. Probamos un Setter y un Getter
-        contactoPrueba.setNumber("555-9999"); // Cambiamos el número
-        System.out.println("Número actualizado (probando Getter): " + contactoPrueba.getNumber());
-
-        System.out.println("----------------------------------------------------\n");
-
-
-        // ==========================================================
-        // PARTE 1: PRUEBAS DE LA AGENDA (Añadir y Existe)
-        // ==========================================================
+        Scanner scanner = new Scanner(System.in);
         Agenda miAgenda = new Agenda();
 
-        System.out.println("--- 1. AÑADIENDO CONTACTOS (Compañero) ---");
-        miAgenda.añadirContacto("José", "Morales", "8100000000");
-        miAgenda.añadirContacto("Maria", "González", "8111111111");
+        String opcion;
 
-        //Ale para comprobar búsquedas
-        miAgenda.añadirContacto("Ale", "Gomez", "555-1234");
-        //comprobar tu ordenamiento alfabético
-        miAgenda.añadirContacto("Ana", "Zavala", "555-7777");
+        do {
+            System.out.println("\n========== MENÚ DE AGENDA ==========");
+            System.out.println("1. Añadir contacto");
+            System.out.println("2. Verificar si existe un contacto");
+            System.out.println("3. Buscar contacto por nombre y apellido");
+            System.out.println("4. Buscar contacto por nombre o nombre completo");
+            System.out.println("5. Listar contactos");
+            System.out.println("6. Eliminar contacto");
+            System.out.println("7. Modificar teléfono");
+            System.out.println("8. Verificar si la agenda está llena");
+            System.out.println("9. Ver espacios libres");
+            System.out.println("0. Salir");
+            System.out.print("Selecciona una opción: ");
 
-        System.out.println("\n--- 2. VERIFICANDO SI EXISTEN (Compañero) ---");
-        Contacto contacto1 = new Contacto("Juan", "Perez", "5551234");
-        Contacto contacto2 = new Contacto("Carlos", "Gomez", "1112223");
+            opcion = scanner.nextLine();
 
-        boolean existeJuan = miAgenda.existeContacto(contacto1);
-        boolean existeCarlos = miAgenda.existeContacto(contacto2);
+            switch (opcion) {
 
-        System.out.println("¿Existe Juan Perez en la agenda?: " + existeJuan);
-        System.out.println("¿Existe Carlos Gomez en la agenda?: " + existeCarlos);
+                case "1":
+                    System.out.println("\n--- AÑADIR CONTACTO ---");
 
+                    System.out.print("Nombre: ");
+                    String nombreAgregar = scanner.nextLine();
 
-        // ==========================================================
-        // PRUEBAS DE BÚSQUEDA Y LISTADO Ale
-        // ==========================================================
-        System.out.println("\n--- 3. PRUEBAS DE BÚSQUEDA ---");
+                    System.out.print("Apellido: ");
+                    String apellidoAgregar = scanner.nextLine();
 
-        System.out.println(">> Buscando exactamente a Maria González:");
-        miAgenda.buscaContacto("Maria", "González");
+                    System.out.print("Teléfono: ");
+                    String telefonoAgregar = scanner.nextLine();
 
-        System.out.println("\n>> Buscando de forma flexible a 'Ale':");
-        miAgenda.buscaContacto("Ale");
+                    miAgenda.añadirContacto(nombreAgregar, apellidoAgregar, telefonoAgregar);
+                    break;
 
-        System.out.println("\n>> Buscando a alguien que no está registrado ('Pedro'):");
-        miAgenda.buscaContacto("Pedro");
+                case "2":
+                    System.out.println("\n--- VERIFICAR SI EXISTE CONTACTO ---");
 
-        System.out.println("\n--- 4. PRUEBA DE LISTADO ALFABÉTICO ---");
-        // Debería imprimir : Ale, Ana, José, Maria
-        miAgenda.listarContactos();
+                    System.out.print("Nombre: ");
+                    String nombreExiste = scanner.nextLine();
 
+                    System.out.print("Apellido: ");
+                    String apellidoExiste = scanner.nextLine();
 
-        // ==========================================================
-        // PRUEBA: MODIFICAR TELÉFONO Estef
-        // ==========================================================
-        System.out.println("\n--- 4. PRUEBA DE MODIFICAR TELÉFONO ---");
+                    Contacto contactoBuscar = new Contacto(nombreExiste, apellidoExiste, "");
+                    boolean existe = miAgenda.existeContacto(contactoBuscar);
 
-        System.out.println(">> Teléfono antes de modificar:");
-        miAgenda.buscaContacto("Maria", "González");
+                    if (existe) {
+                        System.out.println("El contacto sí existe en la agenda.");
+                    } else {
+                        System.out.println("El contacto no existe en la agenda.");
+                    }
+                    break;
 
-        System.out.println("\n>> Modificando teléfono de Maria González...");
-        miAgenda.modificarTelefono("Maria", "González", "8199999999");
+                case "3":
+                    System.out.println("\n--- BUSCAR CONTACTO POR NOMBRE Y APELLIDO ---");
 
-        System.out.println("\n>> Teléfono después de modificar:");
-        miAgenda.buscaContacto("Maria", "González");
+                    System.out.print("Nombre: ");
+                    String nombreBusqueda = scanner.nextLine();
 
-        System.out.println("\n>> Intentando modificar un contacto que no existe:");
-        miAgenda.modificarTelefono("Pedro", "Lopez", "5555555555");
+                    System.out.print("Apellido: ");
+                    String apellidoBusqueda = scanner.nextLine();
+
+                    miAgenda.buscaContacto(nombreBusqueda, apellidoBusqueda);
+                    break;
+
+                case "4":
+                    System.out.println("\n--- BUSCAR CONTACTO POR NOMBRE O NOMBRE COMPLETO ---");
+
+                    System.out.print("Escribe el nombre o nombre completo: ");
+                    String nombreFlexible = scanner.nextLine();
+
+                    miAgenda.buscaContacto(nombreFlexible);
+                    break;
+
+                case "5":
+                    System.out.println("\n--- LISTAR CONTACTOS ---");
+                    miAgenda.listarContactos();
+                    break;
+
+                case "6":
+                    System.out.println("\n--- ELIMINAR CONTACTO ---");
+
+                    System.out.print("Nombre: ");
+                    String nombreEliminar = scanner.nextLine();
+
+                    System.out.print("Apellido: ");
+                    String apellidoEliminar = scanner.nextLine();
+
+                    miAgenda.eliminarContacto(nombreEliminar, apellidoEliminar);
+                    break;
+
+                case "7":
+                    System.out.println("\n--- MODIFICAR TELÉFONO ---");
+
+                    System.out.print("Nombre del contacto: ");
+                    String nombreModificar = scanner.nextLine();
+
+                    System.out.print("Apellido del contacto: ");
+                    String apellidoModificar = scanner.nextLine();
+
+                    System.out.print("Nuevo teléfono: ");
+                    String nuevoTelefono = scanner.nextLine();
+
+                    miAgenda.modificarTelefono(nombreModificar, apellidoModificar, nuevoTelefono);
+                    break;
+
+                case "8":
+                    System.out.println("\n--- VERIFICAR SI LA AGENDA ESTÁ LLENA ---");
+                    miAgenda.agendaLlena();
+                    break;
+
+                case "9":
+                    System.out.println("\n--- ESPACIOS LIBRES ---");
+                    miAgenda.espacioLibres();
+                    break;
+
+                case "0":
+                    System.out.println("Saliendo del programa...");
+                    break;
+
+                default:
+                    System.out.println("Opción inválida. Intenta nuevamente.");
+                    break;
+            }
+
+        } while (!opcion.equals("0"));
+
+        scanner.close();
     }
 }
