@@ -14,10 +14,9 @@ public class Main {
         //AÑADIR Y EXISTENCIA
         // ==========================================================
         System.out.println("--- 1. AÑADIENDO CONTACTOS ---");
-        miAgenda.añadirContacto("José", "Morales", "8100000000");
-        miAgenda.añadirContacto("Maria", "González", "8111111111");
-        miAgenda.añadirContacto("Ale", "Gomez", "555-1234");
-        miAgenda.añadirContacto("Ana", "Zavala", "555-7777");
+
+        miAgenda.añadirContacto("Alberto", "Morales", "8055555555");
+        miAgenda.añadirContacto("Alberto", "Morales", "8055555555");
 
         System.out.println("\n--- 2. VERIFICANDO EXISTENCIA ---");
         Contacto buscar1 = new Contacto("José", "Morales", "");
@@ -44,6 +43,9 @@ public class Main {
         System.out.println("\n--- 6. VERIFICACIÓN FINAL (LISTADO) ---");
         // Aquí debe aparecer la lista sin Ale
         miAgenda.listarContactos();
+
+        miAgenda.agendaLlena();
+        miAgenda.espacioLibres();
 
     } //método Main
 } //Maingit

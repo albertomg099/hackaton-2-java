@@ -7,10 +7,14 @@ public class Agenda {
     private int contadorContacto = 0;
 
     public void añadirContacto(String name, String lastName, String number) {
+        Contacto nuevo = new Contacto(name, lastName, number);
+        if (existeContacto(nuevo)) {
+            System.out.println("El contacto " + name + " " + lastName + " ya existe en la agenda.");
+            return;
+        }
         if (contadorContacto >= 10) {
             System.out.println("La agenda está llena, no se pueden agregar más contactos.");
         } else {
-            Contacto nuevo = new Contacto(name, lastName, number);
             listaContacto[contadorContacto] = nuevo;
             contadorContacto++;
             System.out.println("Contacto añadido con éxito.");
@@ -124,6 +128,19 @@ public class Agenda {
         if (!encontrado) {
             System.out.println(" Error: No se encontró el contacto '" + nombre + " " + apellido + "' para modificar su teléfono.");
         }
+    }
+
+    public void agendaLlena() {
+        if (contadorContacto == listaContacto.length) {
+            System.out.println("Espacio de agenda lleno");
+        } else {
+            System.out.println("La agenda tiene espacio disponible");
+        }
+    }
+
+    public void espacioLibres() {
+        int libres = listaContacto.length - contadorContacto;
+        System.out.println("Espacios disponibles: " + libres);
     }
 
 } //
