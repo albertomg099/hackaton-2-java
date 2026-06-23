@@ -1,17 +1,15 @@
 public class Contacto {
 
-    private static int total;
     private String name;
     private String lastName;
-    private int number;
+    private String number;
 
-    public Contacto(String name, String lastName, int number){
-        int total = total <= 10 ? true : false;
+
+    public Contacto(String name, String lastName, String number){
         this.name = name;
         this.lastName = lastName;
         this.number = number;
     }//Contructor Contacto
-
 
 
     public String getName() {
@@ -30,11 +28,11 @@ public class Contacto {
         this.lastName = lastName;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
@@ -43,7 +41,7 @@ public class Contacto {
         return "Contacto{" +
                 "name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", number=" + number +
+                ", number='" + number + '\'' +
                 '}';
     }
 }// class Contacto
