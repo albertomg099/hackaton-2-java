@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
+<<<<<<< HEAD
         Agenda miAgenda = new Agenda();
 
         // ==========================================================
@@ -48,6 +49,8 @@ public class Main {
         miAgenda.modificarTelefono("Maria", "González", "999-888-777");
         miAgenda.modificarTelefono("Luis", "Alvarez", "555-000-111");
 
+=======
+>>>>>>> 7388e62de9fa28f1772830a148378ff0aceed859
         Agenda agenda = new Agenda();
 
 
@@ -61,6 +64,7 @@ public class Main {
         agenda.contactos[7] = new Contacto("Sofia", "Mora", "3333");
         agenda.contactos[8] = new Contacto("Diego", "Cruz", "4444");
         agenda.contactos[9] = new Contacto("Elena", "Rios", "5555");
+<<<<<<< HEAD
         //agenda.listarContactos(); = 9;
 
         System.out.println("--- 1. AÑADIENDO CONTACTOS ---");
@@ -71,3 +75,10 @@ public class Main {
 
     } //método Main
 } //Maingit
+=======
+        agenda.totalContactos = 10;
+
+        System.out.println(agenda.agendaLlena());
+    }
+}//class Main
+>>>>>>> 7388e62de9fa28f1772830a148378ff0aceed859

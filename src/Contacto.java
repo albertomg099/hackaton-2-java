@@ -1,4 +1,5 @@
 public class Contacto {
+<<<<<<< HEAD
 
     private String name;
     private String lastName;
@@ -48,3 +49,15 @@ public class Contacto {
 
 
 }// class Contacto
+=======
+    private String nombre;
+    private String apellido;
+    private String telefono;
+
+    public Contacto(String nombre, String apellido, String telefono) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+    }
+}
+>>>>>>> 7388e62de9fa28f1772830a148378ff0aceed859

@@ -2,7 +2,10 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Agenda {
+    public Contacto[] contactos;
+    public int totalContactos;
 
+<<<<<<< HEAD
     private Contacto[] listaContacto = new Contacto[10];
     private int contadorContacto = 0;
 
@@ -128,11 +131,14 @@ public class Agenda {
     public Contacto[] contactos;
     public int totalContactos;
 
+=======
+>>>>>>> 7388e62de9fa28f1772830a148378ff0aceed859
     public Agenda() {
         this.contactos = new Contacto[10];
         this.totalContactos = 0;
     }
 
+<<<<<<< HEAD
     public void agendaLlena() {
         if (contadorContacto == listaContacto.length ) {
             System.out.println("Espacio de agenda lleno");
@@ -146,3 +152,9 @@ public class Agenda {
 
 
 } //
+=======
+    public boolean agendaLlena() {
+        return totalContactos == contactos.length;
+    }
+}
+>>>>>>> 7388e62de9fa28f1772830a148378ff0aceed859
