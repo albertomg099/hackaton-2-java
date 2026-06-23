@@ -89,6 +89,4 @@ public class Agenda {
         }
     }
 
-    public void eliminarContacto(String ale, String gomez) {
-    }
 }
